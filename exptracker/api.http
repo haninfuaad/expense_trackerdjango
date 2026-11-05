@@ -1,0 +1,111 @@
+# create 
+###
+POST http://127.0.0.1:8000/create/
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+{
+    "title": "Lunch",
+    "amount": 150.00,
+    "category": "food",
+    "payment": "card"
+}
+
+# list
+### List all my expenses
+GET http://127.0.0.1:8000/create/
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+
+# retrieve
+
+### Retrieve one expense
+GET http://127.0.0.1:8000/expenses/3/
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+
+### Update an expense
+PATCH http://127.0.0.1:8000/expenses/1/
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+{
+    "title": "Lunch at restaurant"
+}
+
+
+### Delete an expense
+DELETE http://127.0.0.1:8000/expenses/2/
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+
+#filtering
+###
+### Filter by category
+GET http://127.0.0.1:8000/create/?category=food
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+### Filter by payment
+GET http://127.0.0.1:8000/create/?payment=upi
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+### Filter by both
+GET http://127.0.0.1:8000/create/?category=food&payment=upi
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+
+#searching expenses
+
+### Get all food expenses
+GET http://127.0.0.1:8000/create/?category=food
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+### Get UPI expenses
+GET http://127.0.0.1:8000/create/?payment=upi
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+### Get card expenses
+GET http://127.0.0.1:8000/create/?payment=
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+
+
+##ordering
+
+
+### Sort by amount (ascending)
+GET http://127.0.0.1:8000/create/?ordering=amount
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+
+### Sort by amount (descending)
+GET http://127.0.0.1:8000/create/?ordering=-amount
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+
+### Sort by creation date (oldest first)
+GET http://127.0.0.1:8000/create/?ordering=created_at
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+
+### Sort by creation date (newest first)
+GET http://127.0.0.1:8000/create/?ordering=-created_at
+Content-Type: application/json
+Authorization:Basic admin:admin123
+
+### Food expenses, search Lunch, highest amount first
+GET http://127.0.0.1:8000/create/?category=food&search=Lunch&ordering=-amount
+Content-Type: application/json
+Authorization:Basic admin:admin123
